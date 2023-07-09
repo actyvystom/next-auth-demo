@@ -5,7 +5,7 @@ import styled from "styled-components";
 export function FishCard({fish, isLocked = false}) {
   if (!fish && !isLocked) return null;
   return (
-    <StyledCard color={fish?.color}>
+    <StyledCard $color={fish?.color}>
       {isLocked ? (
         <h1>🔒 Unauthorized</h1>
       ) : (
