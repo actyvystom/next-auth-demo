@@ -34,9 +34,9 @@ export default function Home() {
       <StyledList>
         {fishData.map(fish => {
           return (
-            <li key={fish.id}>
+            <StyledListItem key={fish.id} $fishIcon={fish.icon}>
               <StyledLink href={`/fish/${fish.id}`}>{fish.name}</StyledLink>
-            </li>
+            </StyledListItem>
           );
         })}
       </StyledList>
@@ -71,8 +71,13 @@ const StyledList = styled.ul`
   list-style: none;
   margin: 20px 0;
   padding: 0;
-  li:before {
-    content: "🐟";
+`;
+
+const StyledListItem = styled.li`
+  ::before {
+    ${({$fishIcon}) =>
+      $fishIcon ? `content: "${$fishIcon}";` : `"content: "🐬";`};
+
     margin-right: 10px;
   }
 `;

@@ -5,7 +5,7 @@ async function handler(req, res) {
     case "GET":
       return res.status(200).json(
         fishData.map(fish => {
-          return {id: fish.id, name: fish.name};
+          return {id: fish.id, name: fish.name, icon: fish.icon};
         })
       );
     default:

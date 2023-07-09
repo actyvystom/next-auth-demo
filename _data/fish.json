@@ -1,23 +1,26 @@
 [
   {
     "id": "1",
-    "name": "Nemo",
-    "email": "ralf@actyvy.st",
+    "name": "Flipper",
+    "email": "thomas.goerldt@actyvyst.com",
     "color": "#fb5607",
-    "secret": "I am very shy"
+    "secret": "I am very clever",
+    "icon": "🐬"
   },
   {
     "id": "2",
     "name": "Dorie",
-    "email": "isewat@gmail.com",
+    "email": "thomas.goerldt@neuefische.de",
     "color": "#2ec4b6",
-    "secret": "I am afraid of water"
+    "secret": "I am afraid of water",
+    "icon": "🐟"
   },
   {
     "id": "3",
     "name": "Sushi",
     "email": "test@example.com",
     "color": "#7b2cbf",
-    "secret": "I don't taste good"
+    "secret": "I am special",
+    "icon": "🍣"
   }
 ]
