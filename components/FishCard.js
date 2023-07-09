@@ -2,11 +2,11 @@ import styled from "styled-components";
 
 // This is a demo component to demonstrate Styled Components integration
 
-export function FishCard({fish, locked = false}) {
-  if (!fish && !locked) return null;
+export function FishCard({fish, isLocked = false}) {
+  if (!fish && !isLocked) return null;
   return (
     <StyledCard color={fish?.color}>
-      {locked ? (
+      {isLocked ? (
         <h1>🔒 Unauthorized</h1>
       ) : (
         <>

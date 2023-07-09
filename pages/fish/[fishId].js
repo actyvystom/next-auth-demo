@@ -7,12 +7,17 @@ export const FishDetails = () => {
   const [fish, setFish] = useState(null);
   const router = useRouter();
   const {fishId} = router.query;
+  const [isLocked, setIsLocked] = useState(false);
   useEffect(() => {
     const loadFishDetails = async () => {
       try {
         const response = await fetch(`/api/fish/${fishId}`);
         if (!response.ok) {
-          throw new Error(`status: ${response.status}`);
+          if (response.status === 401) {
+            setIsLocked(true);
+          } else {
+            throw new Error(`status: ${response.status}`);
+          }
         }
         const data = await response.json();
         setFish(data);
@@ -28,7 +33,7 @@ export const FishDetails = () => {
 
   return (
     <StyledContainer>
-      <FishCard fish={fish} />
+      <FishCard fish={fish} isLocked={isLocked} />
     </StyledContainer>
   );
 };

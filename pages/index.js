@@ -3,10 +3,10 @@ import {useState, useEffect} from "react";
 import Link from "next/link";
 import {StyledContainer} from "../components/StyledContainer";
 import {StyledButton} from "../components/StyledButton";
-
+import {useSession, signIn, signOut} from "next-auth/react";
 export default function Home() {
   const [fishData, setFishData] = useState([]);
-
+  const {data: session} = useSession();
   useEffect(() => {
     const loadFishData = async () => {
       try {
@@ -29,7 +29,14 @@ export default function Home() {
   return (
     <StyledContainer>
       <StyledSection>
-        <StyledButton>Login</StyledButton>
+        {session ? (
+          <>
+            <StyledButton onClick={signOut}>Logout</StyledButton>
+            <p>Signed in as {session.user.email}</p>
+          </>
+        ) : (
+          <StyledButton onClick={() => signIn("github")}>Login</StyledButton>
+        )}
       </StyledSection>
       <StyledList>
         {fishData.map(fish => {
