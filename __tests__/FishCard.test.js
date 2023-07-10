@@ -4,7 +4,7 @@ import "@testing-library/jest-dom";
 
 describe("FishCard", () => {
   it("renders a lock icon", () => {
-    render(<FishCard locked={true} />);
+    render(<FishCard isLocked={true} />);
     const heading = screen.getByRole("heading", {
       name: /🔒/i,
     });
