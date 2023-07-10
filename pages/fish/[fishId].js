@@ -5,6 +5,7 @@ import {FishCard} from "../../components/FishCard";
 
 export const FishDetails = () => {
   const [fish, setFish] = useState(null);
+  const [locked, setLocked] = useState(false);
   const router = useRouter();
   const {fishId} = router.query;
   useEffect(() => {
@@ -12,7 +13,12 @@ export const FishDetails = () => {
       try {
         const response = await fetch(`/api/fish/${fishId}`);
         if (!response.ok) {
-          throw new Error(`status: ${response.status}`);
+          if (response.status === 401) {
+            setLocked(true);
+            return;
+          } else {
+            throw new Error(`status: ${response.status}`);
+          }
         }
         const data = await response.json();
         setFish(data);
@@ -28,7 +34,7 @@ export const FishDetails = () => {
 
   return (
     <StyledContainer>
-      <FishCard fish={fish} />
+      <FishCard fish={fish} isLocked={locked} />
     </StyledContainer>
   );
 };
